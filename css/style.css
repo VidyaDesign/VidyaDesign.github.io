@@ -1,0 +1,515 @@
+/* --- 1. Importação de Fontes e Variáveis --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;700&display=swap');
+
+:root {
+    --bg-color: #0f172a;        /* Azul escuro profundo (Slate 900) */
+    --card-bg: rgba(30, 41, 59, 0.5); /* Fundo base para Glassmorphism (50% transparente) */
+    --text-primary: #f8fafc;    /* Branco gelo */
+    --text-secondary: #94a3b8;  /* Cinza azulado para textos secundários */
+    --accent: #8b5cf6;          /* Roxo vibrante (Violet 500) */
+    --accent-hover: #7c3aed;    /* Roxo mais escuro para hover */
+    --gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%); /* Gradiente Roxo -> Azul */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --blur-intensity: 12px;     /* Intensidade do embaçamento (Glassmorphism) */
+}
+
+/* --- 2. Reset e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Faz o scroll deslizar suavemente ao clicar nos links */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Personalização da Barra de Rolagem (Scrollbar) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* --- 3. Navegação (Navbar) com Glassmorphism --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    
+    /* Fundo Base e Borda */
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
+    /* Efeito de Vidro Fosco */
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    backdrop-filter: blur(var(--blur-intensity));
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+}
+
+.dot {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Botão GitHub na Navbar */
+.btn-nav {
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    color: var(--accent) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+    background: var(--accent);
+    color: #fff !important;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+/* --- 4. Seção Hero (Início) - NOVO LAYOUT COM FOTO --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    /* Altera o layout principal para horizontal (Conteúdo | Foto) */
+    flex-direction: row; 
+    justify-content: space-around;
+    align-items: center;
+    /* Alinha o texto à esquerda por padrão */
+    text-align: left; 
+    padding: 6rem 5% 2rem 5%;
+    position: relative;
+    max-width: 1200px; /* Limita a largura do hero container */
+    margin: 0 auto;
+}
+
+.hero-content {
+    /* Garante que o conteúdo ocupe a maior parte do espaço */
+    flex: 1; 
+    max-width: 550px;
+    margin-right: 2rem;
+}
+
+/* Glow Effect (Luz de fundo) - Ajuste de posição */
+.glow-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    filter: blur(180px);
+    opacity: 0.15;
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%; /* Move para o centro vertical */
+    right: 10%; /* Move para a direita */
+    transform: translateY(-50%);
+}
+
+.greeting {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.roles {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.hero-desc {
+    max-width: 650px;
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+/* Botões de Chamada (CTA) */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinha os botões à esquerda */
+}
+
+/* Botão Primário (Gradiente) */
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -10px rgba(139, 92, 246, 0.6);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px -10px rgba(139, 92, 246, 0.8);
+}
+
+/* Botão Secundário (Vidro Fosco) */
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    /* Efeito de Vidro Fosco */
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    background: rgba(139, 92, 246, 0.15);
+    transform: translateY(-2px);
+}
+
+/* NOVO: Estilização da Imagem de Perfil */
+.hero-image {
+    width: 350px; 
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Torna a imagem redonda */
+    border: 5px solid var(--accent); /* Borda com a cor principal */
+    /* Sombra para destaque */
+    box-shadow: 0 0 50px rgba(139, 92, 246, 0.4); 
+    transition: all 0.5s ease;
+}
+
+.profile-photo:hover {
+    box-shadow: 0 0 70px rgba(139, 92, 246, 0.7); /* Aumenta o brilho no hover */
+}
+
+
+/* --- 5. Layout Geral das Seções --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient);
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* --- 6. Seção Sobre (Com Glassmorphism) --- */
+.about-content {
+    /* Utiliza a variável card-bg com transparência */
+    background: var(--card-bg); 
+    padding: 3rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda mais visível para o efeito */
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+    
+    /* Efeito de Vidro Fosco */
+    -webkit-backdrop-filter: blur(var(--blur-intensity)); 
+    backdrop-filter: blur(var(--blur-intensity)); 
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+    font-size: 1.05rem;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+.about-content strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* --- 7. Grid de Skills (Cards com Glassmorphism) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    /* Utiliza a variável card-bg com transparência */
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    /* Efeito de Vidro Fosco */
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    backdrop-filter: blur(var(--blur-intensity));
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    background: rgba(30, 41, 59, 0.7); /* Fica um pouco menos transparente no hover */
+}
+
+.icon-box {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.skill-card h4 {
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tags span {
+    background: rgba(255, 255, 255, 0.03);
+    color: #cbd5e1;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.skill-card:hover .tags span {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+    color: #fff;
+}
+
+/* --- 8. Footer --- */
+footer {
+    text-align: center;
+    padding: 5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: #0b1120;
+    margin-top: 4rem;
+}
+
+footer h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    color: var(--text-secondary);
+}
+
+.socials {
+    margin: 2.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.socials a {
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: var(--accent);
+    transform: translateY(-3px) scale(1.1);
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+/* --- 9. Responsividade (Mobile) - AJUSTADO PARA O NOVO LAYOUT DO HERO --- */
+@media (max-width: 992px) {
+    /* Quebra o Hero para Mobile/Tablet */
+    .hero {
+        flex-direction: column; /* Empilha o conteúdo */
+        text-align: center; /* Centraliza o texto */
+        padding-top: 8rem;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .cta-buttons {
+        justify-content: center; /* Centraliza os botões */
+    }
+
+    .hero-image {
+        order: -1; /* Coloca a imagem no topo no mobile */
+        margin: 0 auto 3rem auto;
+        width: 250px;
+        height: 250px;
+    }
+    
+    .glow-effect {
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .roles {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .btn-nav {
+        display: none;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .about-content, .skill-card {
+        /* Reduz o embaçamento no mobile para melhor performance */
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        padding: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr; /* Força uma coluna única em telas muito pequenas */
+    }
+}
