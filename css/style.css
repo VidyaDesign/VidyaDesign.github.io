@@ -510,15 +510,170 @@ footer p {
     }
 }
 
+/* --- 10. Menu Hamburger e Mobile Menu (Responsivo até 768px) --- */
+
+/* Hamburger Button - Visível apenas em telas pequenas (oculto por padrão no desktop) */
+/* Hamburger Button - Visível apenas em telas pequenas (oculto por padrão no desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    
+    /* Novo: Efeito hover elegante nas barras */
+    position: relative;
+    overflow: hidden;
+}
+
+.hamburger .bar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--accent); /* Roxo vibrante */
+    border-radius: 2px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+.hamburger:hover .bar::before {
+    transform: translateX(0);
+}
+
+/* Opcional: leve escala nas barras ao hover no hamburger inteiro para mais fluidez */
+.hamburger:hover .bar {
+    transform: scaleX(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Animação do hamburger transformando em "X" quando ativo */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* Overlay do Menu Mobile - Fundo com efeito de vidro fosco elegante */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.85); /* Fundo escuro semi-transparente */
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); /* Efeito vidro fosco intenso */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 1000;
+}
+
+/* Estado ativo do menu mobile */
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Lista de links no menu mobile */
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.mobile-nav-links li {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.mobile-menu.active .mobile-nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Atraso progressivo para animação em cascata dos itens */
+.mobile-menu.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.4s; }
+
+/* Estilo dos links no menu mobile */
+.mobile-nav-links a {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 0.8rem 0;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--accent);
+    transform: translateX(10px);
+}
+
+/* Estilo especial para o botão GitHub dentro do menu mobile */
+.mobile-nav-links .btn-nav {
+    display: inline-block;
+    margin: 2rem auto 0;
+    padding: 0.9rem 2rem;
+    font-size: 1.2rem;
+}
+
+/* --- Responsividade: Ativação do menu mobile e ajustes gerais até 768px --- */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1.2rem;
+    /* Ativa o botão hamburger */
+    .hamburger {
+        display: flex;
     }
 
+    /* Esconde a navegação horizontal padrão */
     .nav-links {
         display: none;
     }
 
+    /* Esconde o botão GitHub da navbar desktop */
+    .btn-nav {
+        display: none;
+    }
+
+    /* Ajustes gerais da navbar */
+    .navbar {
+        padding: 1.2rem 5%; /* Mantém padding horizontal consistente */
+    }
+
+    /* Ajustes tipográficos e de layout no hero */
     .hero h1 {
         font-size: 2.8rem;
     }
@@ -528,24 +683,25 @@ footer p {
         padding: 0 1rem;
     }
 
-    .btn-nav {
-        display: none;
-    }
-
     .section-title {
         font-size: 1.8rem;
     }
 
+    /* Otimização de performance no glassmorphism em dispositivos móveis */
     .about-content,
     .skill-card {
-        /* Reduz o embaçamento no mobile para melhor performance */
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
         padding: 2rem;
     }
 
+    /* Grid de skills em coluna única */
     .skills-grid {
-        grid-template-columns: 1fr;
-        /* Força uma coluna única em telas muito pequenas */
+        grid-template-columns: 1fr; /* Força uma coluna única em telas muito pequenas */
+    }
+
+    /* Ajuste fino nos links do menu mobile */
+    .mobile-nav-links a {
+        font-size: 1.6rem;
     }
 }

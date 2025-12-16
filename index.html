@@ -22,6 +22,8 @@
 
     <nav class="navbar">
         <div class="logo">VIDYADESIGN<span class="dot">.</span></div>
+
+        <!-- Links visíveis apenas em desktop -->
         <ul class="nav-links">
             <li><a href="#home">Início</a></li>
             <li><a href="#about">Sobre</a></li>
@@ -29,33 +31,51 @@
             <li><a href="https://github.com/VidyaDesign" target="_blank" rel="noopener noreferrer"
                     class="btn-nav">GitHub <i class="fab fa-github"></i></a></li>
         </ul>
+
+        <!-- Hamburger Button (visível apenas em mobile) -->
+        <div class="hamburger" aria-label="Abrir menu" role="button" tabindex="0">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <!-- Menu Mobile (inicialmente oculto) -->
+        <div class="mobile-menu">
+            <ul class="mobile-nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="https://github.com/VidyaDesign" target="_blank" rel="noopener noreferrer"
+                        class="btn-nav">GitHub <i class="fab fa-github"></i></a></li>
+            </ul>
+        </div>
     </nav>
 
     <header id="home" class="hero">
-    <div class="hero-content">
-        <span class="greeting">Olá, eu sou</span>
-        <h1>Mahavidya</h1>
-        <h2 class="roles">
-            Front-End Dev | Web Designer UX/UI | Marketing Digital
-        </h2>
-        <p class="hero-desc">
-            Criando experiências digitais intuitivas, acessíveis e visualmente impactantes.
-        </p>
-        <div class="cta-buttons">
-            <a href="https://github.com/VidyaDesign?tab=repositories" target="_blank" rel="noopener noreferrer"
-                class="btn-primary">
-                Ver Projetos <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#contact" class="btn-secondary">Contato</a>
+        <div class="hero-content">
+            <span class="greeting">Olá, eu sou</span>
+            <h1>Mahavidya</h1>
+            <h2 class="roles">
+                Front-End Dev | Web Designer UX/UI | Marketing Digital
+            </h2>
+            <p class="hero-desc">
+                Criando experiências digitais intuitivas, acessíveis e visualmente impactantes.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://github.com/VidyaDesign?tab=repositories" target="_blank" rel="noopener noreferrer"
+                    class="btn-primary">
+                    Ver Projetos <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn-secondary">Contato</a>
+            </div>
         </div>
-    </div>
-    
-    <div class="hero-image">
-        <img src="img/Foto Circle.png" alt="Foto de Perfil - Mahavidya" class="profile-photo">
-    </div>
-    
-    <div class="glow-effect"></div>
-</header>
+
+        <div class="hero-image">
+            <img src="img/Foto Circle.png" alt="Foto de Perfil - Mahavidya" class="profile-photo">
+        </div>
+
+        <div class="glow-effect"></div>
+    </header>
 
     <section id="about" class="container section">
         <h3 class="section-title">Perfil Profissional</h3>
