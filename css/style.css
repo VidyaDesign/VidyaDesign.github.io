@@ -2,16 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;700&display=swap');
 
 :root {
-    --bg-color: #0f172a;        /* Azul escuro profundo (Slate 900) */
-    --card-bg: rgba(30, 41, 59, 0.5); /* Fundo base para Glassmorphism (50% transparente) */
-    --text-primary: #f8fafc;    /* Branco gelo */
-    --text-secondary: #94a3b8;  /* Cinza azulado para textos secundários */
-    --accent: #8b5cf6;          /* Roxo vibrante (Violet 500) */
-    --accent-hover: #7c3aed;    /* Roxo mais escuro para hover */
-    --gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%); /* Gradiente Roxo -> Azul */
+    --bg-color: #0f172a;
+    /* Azul escuro profundo (Slate 900) */
+    --card-bg: rgba(30, 41, 59, 0.5);
+    /* Fundo base para Glassmorphism (50% transparente) */
+    --text-primary: #f8fafc;
+    /* Branco gelo */
+    --text-secondary: #94a3b8;
+    /* Cinza azulado para textos secundários */
+    --accent: #8b5cf6;
+    /* Roxo vibrante (Violet 500) */
+    --accent-hover: #7c3aed;
+    /* Roxo mais escuro para hover */
+    --gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    /* Gradiente Roxo -> Azul */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --blur-intensity: 12px;     /* Intensidade do embaçamento (Glassmorphism) */
+    --blur-intensity: 12px;
+    /* Intensidade do embaçamento (Glassmorphism) */
 }
 
 /* --- 2. Reset e Estilos Globais --- */
@@ -21,8 +29,16 @@
     box-sizing: border-box;
 }
 
+/* Remove o destaque azul completamente */
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -webkit-tap-highlight: none;
+}
+
 html {
-    scroll-behavior: smooth; /* Faz o scroll deslizar suavemente ao clicar nos links */
+    scroll-behavior: smooth;
+    /* Faz o scroll deslizar suavemente ao clicar nos links */
 }
 
 body {
@@ -47,13 +63,16 @@ ul {
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
     background: #475569;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
 }
@@ -68,11 +87,11 @@ ul {
     width: 100%;
     top: 0;
     z-index: 1000;
-    
+
     /* Fundo Base e Borda */
     background: rgba(15, 23, 42, 0.85);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    
+
     /* Efeito de Vidro Fosco */
     -webkit-backdrop-filter: blur(var(--blur-intensity));
     backdrop-filter: blur(var(--blur-intensity));
@@ -127,20 +146,21 @@ ul {
     min-height: 100vh;
     display: flex;
     /* Altera o layout principal para horizontal (Conteúdo | Foto) */
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     /* Alinha o texto à esquerda por padrão */
-    text-align: left; 
+    text-align: left;
     padding: 6rem 5% 2rem 5%;
     position: relative;
-    max-width: 1200px; /* Limita a largura do hero container */
+    max-width: 1200px;
+    /* Limita a largura do hero container */
     margin: 0 auto;
 }
 
 .hero-content {
     /* Garante que o conteúdo ocupe a maior parte do espaço */
-    flex: 1; 
+    flex: 1;
     max-width: 550px;
     margin-right: 2rem;
 }
@@ -155,8 +175,10 @@ ul {
     opacity: 0.15;
     border-radius: 50%;
     z-index: -1;
-    top: 50%; /* Move para o centro vertical */
-    right: 10%; /* Move para a direita */
+    top: 50%;
+    /* Move para o centro vertical */
+    right: 10%;
+    /* Move para a direita */
     transform: translateY(-50%);
 }
 
@@ -200,7 +222,8 @@ ul {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Alinha os botões à esquerda */
+    justify-content: flex-start;
+    /* Alinha os botões à esquerda */
 }
 
 /* Botão Primário (Gradiente) */
@@ -229,7 +252,7 @@ ul {
     border-radius: 50px;
     font-weight: 500;
     transition: all 0.3s ease;
-    
+
     /* Efeito de Vidro Fosco */
     background: rgba(255, 255, 255, 0.08);
     -webkit-backdrop-filter: blur(8px);
@@ -244,7 +267,7 @@ ul {
 
 /* NOVO: Estilização da Imagem de Perfil */
 .hero-image {
-    width: 350px; 
+    width: 350px;
     height: 350px;
     display: flex;
     align-items: center;
@@ -258,15 +281,18 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Torna a imagem redonda */
-    border: 5px solid var(--accent); /* Borda com a cor principal */
+    border-radius: 50%;
+    /* Torna a imagem redonda */
+    border: 5px solid var(--accent);
+    /* Borda com a cor principal */
     /* Sombra para destaque */
-    box-shadow: 0 0 50px rgba(139, 92, 246, 0.4); 
+    box-shadow: 0 0 50px rgba(139, 92, 246, 0.4);
     transition: all 0.5s ease;
 }
 
 .profile-photo:hover {
-    box-shadow: 0 0 70px rgba(139, 92, 246, 0.7); /* Aumenta o brilho no hover */
+    box-shadow: 0 0 70px rgba(139, 92, 246, 0.7);
+    /* Aumenta o brilho no hover */
 }
 
 
@@ -299,15 +325,17 @@ ul {
 /* --- 6. Seção Sobre (Com Glassmorphism) --- */
 .about-content {
     /* Utiliza a variável card-bg com transparência */
-    background: var(--card-bg); 
+    background: var(--card-bg);
     padding: 3rem;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda mais visível para o efeito */
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
-    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borda mais visível para o efeito */
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+    /* Sombra mais forte */
+
     /* Efeito de Vidro Fosco */
-    -webkit-backdrop-filter: blur(var(--blur-intensity)); 
-    backdrop-filter: blur(var(--blur-intensity)); 
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    backdrop-filter: blur(var(--blur-intensity));
 }
 
 .about-content p {
@@ -342,7 +370,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
+
     /* Efeito de Vidro Fosco */
     -webkit-backdrop-filter: blur(var(--blur-intensity));
     backdrop-filter: blur(var(--blur-intensity));
@@ -352,7 +380,8 @@ ul {
     transform: translateY(-8px);
     border-color: rgba(139, 92, 246, 0.3);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    background: rgba(30, 41, 59, 0.7); /* Fica um pouco menos transparente no hover */
+    background: rgba(30, 41, 59, 0.7);
+    /* Fica um pouco menos transparente no hover */
 }
 
 .icon-box {
@@ -442,10 +471,13 @@ footer p {
 
 /* --- 9. Responsividade (Mobile) - AJUSTADO PARA O NOVO LAYOUT DO HERO --- */
 @media (max-width: 992px) {
+
     /* Quebra o Hero para Mobile/Tablet */
     .hero {
-        flex-direction: column; /* Empilha o conteúdo */
-        text-align: center; /* Centraliza o texto */
+        flex-direction: column;
+        /* Empilha o conteúdo */
+        text-align: center;
+        /* Centraliza o texto */
         padding-top: 8rem;
     }
 
@@ -459,16 +491,18 @@ footer p {
     }
 
     .cta-buttons {
-        justify-content: center; /* Centraliza os botões */
+        justify-content: center;
+        /* Centraliza os botões */
     }
 
     .hero-image {
-        order: -1; /* Coloca a imagem no topo no mobile */
+        order: -1;
+        /* Coloca a imagem no topo no mobile */
         margin: 0 auto 3rem auto;
         width: 250px;
         height: 250px;
     }
-    
+
     .glow-effect {
         top: 10%;
         left: 50%;
@@ -480,7 +514,7 @@ footer p {
     .navbar {
         padding: 1.2rem;
     }
-    
+
     .nav-links {
         display: none;
     }
@@ -488,28 +522,30 @@ footer p {
     .hero h1 {
         font-size: 2.8rem;
     }
-    
+
     .roles {
         font-size: 1rem;
         padding: 0 1rem;
     }
-    
+
     .btn-nav {
         display: none;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
-    .about-content, .skill-card {
+
+    .about-content,
+    .skill-card {
         /* Reduz o embaçamento no mobile para melhor performance */
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
         padding: 2rem;
     }
-    
+
     .skills-grid {
-        grid-template-columns: 1fr; /* Força uma coluna única em telas muito pequenas */
+        grid-template-columns: 1fr;
+        /* Força uma coluna única em telas muito pequenas */
     }
 }
