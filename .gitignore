@@ -1,0 +1,56 @@
+# Ignora a pasta js aqui (conforme seu pedido explícito)
+js/
+
+# Ignora a pasta css aqui (conforme seu pedido explícito)
+css/
+
+# Ignora a pasta firebase que contém configurações sensíveis
+firebase/
+
+# Ignora a pasta node_modules (caso use npm no futuro)
+node_modules/
+
+# Ignora arquivos de ambiente com informações sensíveis
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignora arquivos de build e cache
+/dist
+/build
+.cache/
+
+# Ignora arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignora arquivos de configuração do editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Ignora arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Ignora arquivos de dependências locais
+package-lock.json
+yarn.lock
+
+# Ignora arquivos sensíveis na raiz (ex.: backups do banco de dados)
+*.sql
+*.bak
+
+# Ignora pastas e arquivos de deploy comuns (Vercel, Netlify, etc)
+.vercel
+.netlify
+.output
